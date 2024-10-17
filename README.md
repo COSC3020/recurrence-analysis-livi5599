@@ -32,9 +32,12 @@ page](https://docs.github.com/en/get-started/writing-on-github/working-with-adva
 might help with the notation for mathematical expressions.
 
 Recurrence relation: T(n) = 3T(n/3) + n^5
-To solve the recurrence relation, I used the substitution method, which led me to the general case of 3^i * T(n/3^i) + n^5 * ((1/3^4)^(i+1)-1)/(3^4-1)
+To solve the recurrence relation, I used the substitution method.
+Before I determined the general case, the problem looked like this: 3^4*T(n/3^4) + 3^3*(n/3^3)^5 + 3^2*(n/3^2)^5 + 3*(n/3)^5 + n^5.
+Since the problem above consisted of a geometric series, I was led to the general case of 3^i * T(n/3^i) + n^5 * ((1/3^4)^(i+1)-1)/(3^4-1).
 To solve the general case, I determined that i = log3(n) and plugged that into the equation.
-After using i to solve the general case, I came to the conclusion that the runtime for the function is $\Theta(n^5)$.
+After plugging i into the general case, the simplified form was n + n/(80*81) - 81*n^5/(80*81).
+Using the simplified form, I came to the conclusion that the runtime for the function is $\Theta(n^5)$ since n^5 grows the fastest and constants can be ignored.
 
 ChatGPT helped correct my analysis of the separate lines of code, as I originally didn't have the right runtime for the recursive lines.  It also helped me simplify the general case when I plugged i into the equation.
 
